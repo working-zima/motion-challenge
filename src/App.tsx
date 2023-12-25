@@ -1,7 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
-import App from "./App";
 import { createGlobalStyle } from "styled-components";
+import ToDoList from "./components/ToDoList";
 
 const GlobalStyle = createGlobalStyle`
 @import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@300;400&display=swap');
@@ -58,9 +56,9 @@ table {
 body {
   font-weight: 300;
   font-family: 'Source Sans Pro', sans-serif;
-  color:black;
+  background-color:${(props) => props.theme.bgColor};
+  color:${(props) => props.theme.textColor};
   line-height: 1.2;
-  background:linear-gradient(135deg,#e09,#d0e);
 }
 a {
   text-decoration:none;
@@ -68,10 +66,13 @@ a {
 }
 `;
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(
-  <React.StrictMode>
-    <GlobalStyle />
-    <App />
-  </React.StrictMode>
-);
+function App() {
+  return (
+    <>
+      <GlobalStyle />
+      <ToDoList />
+    </>
+  );
+}
+
+export default App;
